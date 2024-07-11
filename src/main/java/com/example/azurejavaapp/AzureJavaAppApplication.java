@@ -1,6 +1,8 @@
 package com.example.azurejavaapp;
 
+import com.azure.core.credential.TokenCredential;
 import com.azure.identity.ClientSecretCredentialBuilder;
+import com.azure.identity.DefaultAzureCredentialBuilder;
 import com.azure.security.keyvault.secrets.SecretClient;
 import com.azure.security.keyvault.secrets.SecretClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class AzureJavaAppApplication {
     @Autowired
     private  SecretClient client;
 
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+            .build();
 
     public static void main(String[] args) {
         SpringApplication.run(AzureJavaAppApplication.class, args);
